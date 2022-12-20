@@ -15,7 +15,7 @@ sc config WSearch start= disabled
 REM sc config SysMain start= disabled
 
 REM *** SCHEDULED TASKS tweaks ***
-REM schtasks /Change /TN "Microsoft\Windows\AppID\SmartScreenSpecific" /Disable
+schtasks /Change /TN "Microsoft\Windows\AppID\SmartScreenSpecific" /Disable
 schtasks /Change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
 schtasks /Change /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable
 schtasks /Change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable
@@ -91,7 +91,7 @@ PowerShell -Command "Get-AppxPackage *WindowsCamera* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *bing* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *MicrosoftOfficeHub* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *OneNote* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *people* | Remove-AppxPackage"
+REM PowerShell -Command "Get-AppxPackage *people* -AllUsers | Remove-AppxPackage" ***Unable to remove from OS***
 PowerShell -Command "Get-AppxPackage *WindowsPhone* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *photos* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *SkypeApp* | Remove-AppxPackage"
@@ -108,25 +108,33 @@ PowerShell -Command "Get-AppxPackage *Microsoft.Messaging* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *Facebook* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *Twitter* | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *Drawboard PDF* | Remove-AppxPackage"
-Powershell -Command "Get-appxpackage *Microsoft.XboxGamingOverlay* | Remove-AppxPackage"
-Powershell -Command "Get-AppxPackage *Microsoft.XboxApp* | Remove-AppxPackage"
-Powershell -Command "Get-AppxPackage *Microsoft.LinkedIn* | Remove-AppxPackage"
-Powershell -Command "Get-AppxPackage *Microsoft.WindowsFeedbackHub* | Remove-AppxPackage"
-Powershell -Command "Get-AppxPackage *Microsoft.WindowsMaps* | Remove-AppxPackage"
-Powershell -Command "Get-AppxPackage *Microsoft.MixedReality.Portal* | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *Microsoft.GetHelp* -AllUsers | Remove-AppxPackage"
-PowerShell -Command "Get-AppxPackage *Microsoft.MicrosoftStickyNotes* -AllUsers | Remove-AppxPackage"
+Powershell -Command "Get-appxpackage *XboxGamingOverlay* | Remove-AppxPackage"
+Powershell -Command "Get-AppxPackage *XboxApp* | Remove-AppxPackage"
+Powershell -Command "Get-AppxPackage *LinkedInforWindows* | Remove-AppxPackage"
+Powershell -Command "Get-AppxPackage *WindowsFeedbackHub* | Remove-AppxPackage"
+Powershell -Command "Get-AppxPackage *WindowsMaps* | Remove-AppxPackage"
+Powershell -Command "Get-AppxPackage *MixedReality.Portal* | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *GetHelp* -AllUsers | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *MicrosoftStickyNotes* -AllUsers | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *Microsoft.OneConnect* -AllUsers | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *Microsoft.Microsoft3DViewer* -AllUsers | Remove-AppxPackage"
 PowerShell -Command "Get-AppxPackage *Microsoft.MixedReality.Portal* -AllUsers | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *BingWeather* -AllUsers | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *BingNews -AllUsers | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *XboxSpeechToTextOverlay -AllUser | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *XboxApp -AllUser | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *Xbox.TCUI -AllUser | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *XboxGamingOverlay -AllUser | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *Print3D* -AllUser | Remove-AppxPackage"
+PowerShell -Command "Get-AppxPackage *YourPhone* -AllUser | Remove-AppxPackage"
 
 
 @rem NOW JUST SOME TWEAKS
 REM *** Show hidden files in Explorer ***
-REM reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d 1 /f
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d 1 /f
 
 REM *** Show super hidden system files in Explorer ***
-REM reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSuperHidden" /t REG_DWORD /d 1 /f
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSuperHidden" /t REG_DWORD /d 1 /f
 
 REM *** Show file extensions in Explorer ***
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t  REG_DWORD /d 0 /f
